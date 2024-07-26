@@ -58,15 +58,25 @@ class TransactionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $id = intval($id);
+        $transaction = Transaction::find($id);
+        return view('edit', ['transaction' => $transaction]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        if($request['_token'] === csrf_token()){
+            DB::table('transactions')
+            ->where('id', '=', $request['id'])
+            ->update(['name' => strip_tags($request['name']),
+            'amount' => floatval($request['amount']),
+            'date_transaction' => strip_tags($request['date']),
+            'category_id' => intval($request['category'])]);
+        }
+        return self::index();
     }
 
     /**

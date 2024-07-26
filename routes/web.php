@@ -12,3 +12,4 @@ Route::get('/edit-{id}', [TransactionController::class, 'edit'])
 ->where('id', '[0-9]+')
 ->name('edit');
 Route::post('/store', [TransactionController::class, 'store'])->name('store');
+Route::post('/update', [TransactionController::class, 'update'])->name('update');

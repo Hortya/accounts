@@ -1,4 +1,3 @@
-
 @if($action === 'create')
 <form action="{{@route('store')}}" method="post">
 @CSRF
@@ -36,10 +35,11 @@
     <button type="submit" class="btn btn-primary btn-lg">Ajouter</button>
 </div>
 </form>
+@endif
 
-@elseif($action === 'edit')
 
-<form action="{{@route('store')}}" method="post">
+@if($action === 'update')
+<form action="{{@route('update')}}" method="post">
 @CSRF
 <div class="mb-3">
     <label for="name" class="form-label">Nom de l'opération *</label>
