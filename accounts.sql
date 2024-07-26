@@ -1,47 +1,6 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1:3306
--- Généré le : mer. 24 juil. 2024 à 14:08
--- Version du serveur : 8.0.31
--- Version de PHP : 8.1.13
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données : `accounts`
---
-CREATE DATABASE IF NOT EXISTS `accounts` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE `accounts`;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `category`
---
-
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE IF NOT EXISTS `category` (
-  `id_category` int NOT NULL,
-  `category_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `icon_class` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  PRIMARY KEY (`id_category`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `category`
---
-
-INSERT INTO `category` (`id_category`, `category_name`, `icon_class`) VALUES
+INSERT INTO `categories` (`id_category`, `category_name`, `icon_class`) VALUES
 (1, 'Habitation', 'house-door'),
 (2, 'Travail', 'person-workspace'),
 (3, 'Cadeau', 'gift'),
@@ -52,28 +11,9 @@ INSERT INTO `category` (`id_category`, `category_name`, `icon_class`) VALUES
 (8, 'Voiture', 'car-front'),
 (9, 'Santé', 'bandaid');
 
--- --------------------------------------------------------
 
---
--- Structure de la table `transaction`
---
 
-DROP TABLE IF EXISTS `transaction`;
-CREATE TABLE IF NOT EXISTS `transaction` (
-  `id_transaction` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `amount` decimal(15,2) NOT NULL,
-  `date_transaction` date NOT NULL,
-  `id_category` int DEFAULT NULL,
-  PRIMARY KEY (`id_transaction`),
-  KEY `id_category` (`id_category`)
-) ENGINE=InnoDB AUTO_INCREMENT=211 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `transaction`
---
-
-INSERT INTO `transaction` (`id_transaction`, `name`, `amount`, `date_transaction`, `id_category`) VALUES
+INSERT INTO `transactions` (`id_transaction`, `name`, `amount`, `date_transaction`, `id_category`) VALUES
 (1, 'Bar', '-21.00', '2023-06-10', 7),
 (2, 'Loyer de juin 2023', '-432.00', '2023-06-10', 1),
 (3, 'RDV médecin', '-25.00', '2023-06-12', 9),
@@ -274,7 +214,3 @@ INSERT INTO `transaction` (`id_transaction`, `name`, `amount`, `date_transaction
 (201, 'Course Carrefour', '-141.00', '2024-07-17', NULL),
 (203, 'Abonnement Sosh mobile', '-15.00', '2024-07-20', NULL);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
