@@ -1,6 +1,7 @@
 
 
-INSERT INTO `categories` (`id_category`, `category_name`, `icon_class`) VALUES
+INSERT INTO `categories` (`id`, `category_name`, `icon_class`) VALUES
+(0, 'Autre', 'autre'),
 (1, 'Habitation', 'house-door'),
 (2, 'Travail', 'person-workspace'),
 (3, 'Cadeau', 'gift'),
@@ -13,7 +14,7 @@ INSERT INTO `categories` (`id_category`, `category_name`, `icon_class`) VALUES
 
 
 
-INSERT INTO `transactions` (`id_transaction`, `name`, `amount`, `date_transaction`, `id_category`) VALUES
+INSERT INTO `transactions` (`id`, `name`, `amount`, `date_transaction`, `category_id`) VALUES
 (1, 'Bar', '-21.00', '2023-06-10', 7),
 (2, 'Loyer de juin 2023', '-432.00', '2023-06-10', 1),
 (3, 'RDV médecin', '-25.00', '2023-06-12', 9),
